@@ -17,11 +17,18 @@ dummy_responses = [
 		'Yes, this car is a great option for families. It has a spacious interior, plenty of legroom in the back for kids or car seats, and a large cargo area for strollers or groceries. Plus, the safety features make it a very secure choice for family trips.',
 	]
 
-@app.route('/api/chat', methods=['GET'])
-def get_response():
-    # TODO: Get the AI answer here
-    response = random.choice(dummy_responses)
-    return jsonify({"response": response})
+@app.route('/api/response', methods=['POST'])
+def post_response():
+    # Access the JSON body
+    data = request.json
+
+    # Extract specific keys (if required)
+    user_input = data.get('prompt', 'No value provided')
+    preference_vector = data.get('preferenceVector', [])
+
+    # Respond based on input or send a random dummy response
+    response = {"message": f"You asked: {user_input}", "response": dummy_responses[0]}
+    return jsonify(response)
 
 if __name__ == '__main__':
     app.run(debug=True)
