@@ -11,6 +11,33 @@ from recommender import get_recommendation
 
 app = Flask(__name__)
 
+def translate_keys(ner_dict):
+    ref_dict = {"MAKE":"Make", "MODEL":"Model", "BODY":"Body", "EXTERIOR COLOR":"ExteriorColor", "INTERIOR COLOR":"InteriorColor", "TRANSMISSION":"Transmission", "MARKET CLASS":"MarketClass", "DRIVETRAIN":"Drivetrain", "ENGINE DESCRIPTION":"Engine_Description", "DOORS":"Doors", "ENGINE CYLINDERS":"EngineCylinders", "MILES":"Miles", "SELLING PRICE":"SellingPrice", "PASSENGER CAPACITY":"PassengerCapacity", "CITYMPG":"CityMPG", "HIGHWAYMPG":"HighwayMPG", "YEAR":"Year"}
+    token_dict = {
+        "Year":[],
+        "Body":[],
+        "Make":[],
+        "Model":[],
+        "Doors":[],
+        "ExteriorColor":[],
+        "InteriorColor":[],
+        "EngineCylinders":[],
+        "Transmission":[],
+        "Miles":[],
+        "SellingPrice":[],
+        "MarketClass":[],
+        "PassengerCapacity":[],
+        "Drivetrain":[],
+        "Engine_Description":[],
+        "CityMPG":[],
+        "HighwayMPG":[]
+    }
+
+    for param in ner_dict:
+        token_dict[ref_dict[param]] = ner_dict[param]
+    return token_dict
+
+
 @app.route('/api/chat', methods=['POST'])
 def post_response():
     data = request.json
@@ -22,7 +49,8 @@ def post_response():
         old_dict[k] = np.array(old_dict[k])
     old_preference_vector = old_dict
 
-    print("OLD PREF",old_preference_vector)
+    # print("OLD PREF",old_preference_vector)
+
     chat_history = data.get('chatHistory', [])
 
     response = "Sorry, I didn't understand that. Can you please rephrase your question?"
@@ -40,17 +68,19 @@ def post_response():
     if (intent == 'recommend'):
 		# Step 2: Get NER's code for extracting entities
         entities = extract_entities(user_input)
-        print("Entites of the NER",entities)
+        # print("Entites of the NER",entities)
 
 		# Step 3: Sentiment Analysis
-        saOut = absaList(user_input, entities)
+        # saOut = absaList(user_input, entities)
+
+        saOut  = translate_keys(entities)
         print("SA out",saOut)
 
         #Step 4: Encode saOut into pref vector
         encoded_pref = encode_all_tokens(saOut)
-        print("THE ENCODED PREF VEC",encoded_pref)
+        # print("THE ENCODED PREF VEC",encoded_pref)
         updated_preference_vector22 = update_pref_dict_MM(encoded_pref,old_preference_vector)
-        print("UPDATED PREF VEC",updated_preference_vector22)
+        # print("UPDATED PREF VEC",updated_preference_vector22)
 
         updated_preference_vector = {}
         for i in updated_preference_vector22:
@@ -76,7 +106,7 @@ def post_response():
         # Updated preference vector logic (ensure this is defined elsewhere)
         updated_preference_vector = old_preference_vector
     
-    print("aaaaaaaaaaaaaa",updated_preference_vector)
+    # print("aaaaaaaaaaaaaa",updated_preference_vector)
     for i in updated_preference_vector:
         if isinstance(updated_preference_vector[i], np.ndarray):
             updated_preference_vector[i] = updated_preference_vector[i].tolist()
