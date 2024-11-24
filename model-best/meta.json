@@ -1,0 +1,154 @@
+{
+  "lang":"en",
+  "name":"pipeline",
+  "version":"0.0.0",
+  "spacy_version":">=3.8.2,<3.9.0",
+  "description":"",
+  "author":"",
+  "email":"",
+  "url":"",
+  "license":"",
+  "spacy_git_version":"63f1b53",
+  "vectors":{
+    "width":0,
+    "vectors":0,
+    "keys":0,
+    "name":null,
+    "mode":"default"
+  },
+  "labels":{
+    "tok2vec":[
+
+    ],
+    "ner":[
+      "BODY",
+      "CITYMPG",
+      "DOORS",
+      "DRIVETRAIN",
+      "ENGINE CYLINDERS",
+      "ENGINE DESCRIPTION",
+      "EXTERIOR COLOR",
+      "HIGHWAYMPG",
+      "INTERIOR COLOR",
+      "MAKE",
+      "MARKET CLASS",
+      "MILES",
+      "MODEL",
+      "PASSENGER CAPACITY",
+      "SELLING PRICE",
+      "TRANSMISSION",
+      "VIN",
+      "YEAR"
+    ]
+  },
+  "pipeline":[
+    "tok2vec",
+    "ner"
+  ],
+  "components":[
+    "tok2vec",
+    "ner"
+  ],
+  "disabled":[
+
+  ],
+  "performance":{
+    "ents_f":0.9058011987,
+    "ents_p":0.9050847458,
+    "ents_r":0.9065187868,
+    "ents_per_type":{
+      "YEAR":{
+        "p":1.0,
+        "r":1.0,
+        "f":1.0
+      },
+      "MAKE":{
+        "p":1.0,
+        "r":1.0,
+        "f":1.0
+      },
+      "MODEL":{
+        "p":1.0,
+        "r":0.9963099631,
+        "f":0.9981515712
+      },
+      "BODY":{
+        "p":0.9607843137,
+        "r":0.9671052632,
+        "f":0.9639344262
+      },
+      "DOORS":{
+        "p":0.9886363636,
+        "r":0.9923954373,
+        "f":0.990512334
+      },
+      "EXTERIOR COLOR":{
+        "p":0.8773006135,
+        "r":0.8773006135,
+        "f":0.8773006135
+      },
+      "INTERIOR COLOR":{
+        "p":0.8475836431,
+        "r":0.8475836431,
+        "f":0.8475836431
+      },
+      "ENGINE CYLINDERS":{
+        "p":0.6931818182,
+        "r":0.6740331492,
+        "f":0.6834733894
+      },
+      "TRANSMISSION":{
+        "p":0.7723880597,
+        "r":0.7638376384,
+        "f":0.7680890538
+      },
+      "MILES":{
+        "p":0.9482758621,
+        "r":0.9615384615,
+        "f":0.9548611111
+      },
+      "SELLING PRICE":{
+        "p":0.96,
+        "r":0.9780564263,
+        "f":0.9689440994
+      },
+      "CITYMPG":{
+        "p":1.0,
+        "r":1.0,
+        "f":1.0
+      },
+      "HIGHWAYMPG":{
+        "p":0.9744525547,
+        "r":0.9673913043,
+        "f":0.9709090909
+      },
+      "MARKET CLASS":{
+        "p":0.7632653061,
+        "r":0.7601626016,
+        "f":0.7617107943
+      },
+      "PASSENGER CAPACITY":{
+        "p":0.7418181818,
+        "r":0.7418181818,
+        "f":0.7418181818
+      },
+      "DRIVETRAIN":{
+        "p":0.8617021277,
+        "r":0.8772563177,
+        "f":0.8694096601
+      },
+      "ENGINE DESCRIPTION":{
+        "p":0.9552238806,
+        "r":0.962406015,
+        "f":0.9588014981
+      },
+      "VIN":{
+        "p":1.0,
+        "r":1.0,
+        "f":1.0
+      }
+    },
+    "tok2vec_loss":724.5413649404,
+    "ner_loss":6140.2292350027
+  }
+}
