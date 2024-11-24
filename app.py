@@ -71,10 +71,17 @@ def post_response():
         # print("Entites of the NER",entities)
 
 		# Step 3: Sentiment Analysis
-        # saOut = absaList(user_input, entities)
+        saOut = absaList(user_input, entities)
 
-        saOut  = translate_keys(entities)
+        # saOut  = translate_keys(entities)
         print("SA out",saOut)
+
+        normal_columns = ["Make","Model","Body","Doors","ExteriorColor","InteriorColor","EngineCylinders","Transmission","MarketClass","PassengerCapacity","Drivetrain","Engine_Description","Year","SellingPrice","HighwayMPG","CityMPG"],
+        missingfield = "SellingPrice"
+        for i,k in saOut.items():
+            random_index = random.randint(0, 15)
+            if saOut.get(i, None) == []:
+                missingfield = k
 
         #Step 4: Encode saOut into pref vector
         encoded_pref = encode_all_tokens(saOut)
@@ -86,13 +93,16 @@ def post_response():
         for i in updated_preference_vector22:
             updated_preference_vector[i] = updated_preference_vector22[i].copy()
 
+
+        
+
 		# Step 4: Encoder
-        encoderOut = compare_by_embedding(updated_preference_vector22)
+        encoderOut = compare_by_embedding(encoded_pref)
 
 		# Step 5: Query GPT for response formatting
         two_best_rows = get_recommendation(encoderOut)
         # print(two_best_rows)
-        response = queryGPTCustom(two_best_rows, "You are given the 2 best cars that match the user's preferences and the first row just describes what each column means. Respond in a professional manner as if you are a car salesperson, make it short and detailled and DO NOT go off topic. Format the response in a nice and concise manner such that the options are easily distinguishable by the end user.")
+        response = queryGPTCustom(two_best_rows,missingfield ,"You're given two rows representing the 2 best cars that fit the clients need. Speak like a professional car salesman. Don't be strict with response structure. Do not add anything else. Be concise and conversational like you are talking to one person in the prompt will also be an And followed by a phrase that phrase is the missing preference from the customer, ask the customer nicely for more clarification on that")
 
     else:
         # Step 2: Query GPT for response

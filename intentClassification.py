@@ -1,6 +1,7 @@
 import os
 from openai import OpenAI
 
+os.environ["OPENAI_API_KEY"] = ""
 
 client = OpenAI()
 
@@ -21,14 +22,14 @@ def queryGPT(prompt):
     response = completion.choices[0].message.content
     return response
 
-def queryGPTCustom(prompt, instructions):
+def queryGPTCustom(prompt,missingfield, instructions):
     completion = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
             {
                 "role": "user",
-                "content": f"{instructions}: {prompt}"
+                "content": f"{instructions}: {prompt} and {missingfield}"
             }
         ]
     )
