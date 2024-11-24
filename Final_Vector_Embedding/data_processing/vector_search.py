@@ -88,10 +88,10 @@ def compare_all_params(token_dict):
 
     return current_rec_dict
 
-if __name__ == "__main__":
-    example_dict = {"Year": "before 2019", "Make":"ok Honda", 
-                    "PassengerCapacity": "ok seating 4 people",
-                    "SellingPrice": "Less than 40000"}
+# if __name__ == "__main__":
+#     example_dict = {"Year": "before 2019", "Make":"ok Honda", 
+#                     "PassengerCapacity": "ok seating 4 people",
+#                     "SellingPrice": "Less than 40000"}
     
-    print(compare_all_params(example_dict))
+#     print(compare_all_params(example_dict))
 
