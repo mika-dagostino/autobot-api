@@ -1,0 +1,26 @@
+{
+    "vehicle_csv_path": "Final_Vector_Embedding\\static_assets\\vehicles_priced.csv",
+    "unique_values_path":"Final_Vector_Embedding\\unique_values_param",
+    "vector_database_path":"Final_Vector_Embedding/vector_database",
+    "normal_columns" : ["Make","Model","Body","Doors","ExteriorColor","InteriorColor","EngineCylinders",
+                "Transmission","MarketClass","PassengerCapacity","Drivetrain",
+                "Engine_Description","Year","SellingPrice","HighwayMPG","CityMPG"],
+    "default_pref_dict": {
+        "Year":[],
+        "Make":[],
+        "Model":[],
+        "Doors":[],
+        "ExteriorColor":[],
+        "InteriorColor":[],
+        "EngineCylinders":[],
+        "Transmission":[],
+        "Miles":[],
+        "SellingPrice":[],
+        "MarketClass":[],
+        "PassengerCapacity":[],
+        "Drivetrain":[],
+        "Engine_Description":[],
+        "CityMPG":[],
+        "HighwayMPG":[]
+    }
+}

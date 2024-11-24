@@ -1,0 +1,1 @@
+4dr Car,Hatchback,Sport Utility,Convertible,3dr Car,2dr Car,Station Wagon,Extended Cab Pickup,Mini-van, Passenger,Regular Cab Pickup,Crew Cab Pickup,Mini-van, Cargo,Full-size Cargo Van,Full-size Passenger Van,3D Cargo Van
