@@ -19,15 +19,24 @@ dummy_responses = [
 
 @app.route('/api/response', methods=['POST'])
 def post_response():
-    # Access the JSON body
     data = request.json
 
-    # Extract specific keys (if required)
     user_input = data.get('prompt', 'No value provided')
     preference_vector = data.get('preferenceVector', [])
+    chat_history = data.get('chatHistory', [])
 
-    # Respond based on input or send a random dummy response
-    response = {"message": f"You asked: {user_input}", "response": dummy_responses[0]}
+	# Run the AI CODE here
+
+	# TODO: Implement the AI code here to generate a response based on the user input, preference vector, and chat history
+
+	# Get the response and updated preference vector
+    updated_preference_vector = preference_vector
+    response = dummy_responses[0]
+
+    body = {
+		'response': response,
+		'preferenceVector': updated_preference_vector
+	}
     return jsonify(response)
 
 if __name__ == '__main__':
