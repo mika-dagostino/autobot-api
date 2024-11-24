@@ -1,7 +1,7 @@
 import json
 
 # Read the JSON file
-with open(r'creds.json', 'r') as file:
+with open(r'C:\Jeff_Documents\Programming\CodeJam14\autobot-api\Final_Vector_Embedding\creds.json', 'r') as file:
     data = json.load(file)
     CSV_DIR = data["vehicle_csv_path"]
     UNIQUE_VALUES_DIR = data["unique_values_path"]

@@ -7,6 +7,7 @@
                 "Engine_Description","Year","SellingPrice","HighwayMPG","CityMPG"],
     "default_pref_dict": {
         "Year":[],
+        "Body":[],
         "Make":[],
         "Model":[],
         "Doors":[],
